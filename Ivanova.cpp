@@ -1,41 +1,43 @@
-﻿// Lab1.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
 /************************
- * Автор: Иванова К.Д.  *
- * Дата : 16.09.2026    *
- * Вариант 1            *
- * Название : Лаба 1    *
+ * Автор: Иванова Ксения*
+ * Вариант: 1           *
+ * Название: Лаба 1     *
  ************************/
 
 #include <iostream>
+#include <cmath>
+
 using namespace std;
+
 int main() {
+  double t1, t2, t3, alfa, dl, radianAlfa;
+  double halfAlpha, sinHalf, sin2, sin4;
+  const double pi = 3.14;
+  const double g = 9.8;
 
-    double t1, t2, t3, alfa, dl, radianAlfa;
-    const double pi = 3.14;
-    const double g = 9.8;
+  // Блок ввода данных
+  cout << "alfa = ";
+  cin >> alfa;
+  cout << "dl = ";
+  cin >> dl;
 
-    cout << "alfa = ";
-    cin >> alfa;
+  // Блок расчетов
+  radianAlfa = alfa * (pi / 180.0);
+  t1 = 2.0 * pi * sqrt(dl / g);
+  t2 = 2.0 * pi * sqrt((dl / g) * (1.0 + (1.0 / 16.0) * pow(radianAlfa, 2.0)));
 
-    cout << "dl = ";
-    cin >> dl;
+  halfAlpha = radianAlfa / 2.0;
+  sinHalf = sin(halfAlpha);
+  sin2 = pow(sinHalf, 2.0);
+  sin4 = pow(sinHalf, 4.0);
+  t3 = 2.0 * pi * sqrt((dl / g) * (1.0 + (1.0 / 4.0) * sin2 + (9.0 / 64.0) * sin4));
 
-    radianAlfa = alfa * (pi / 180.0);
+  // Блок вывода результатов
+  cout << "_________________________" << endl
+       << "t1 = " << t1 << endl
+       << "t2 = " << t2 << endl
+       << "t3 = " << t3 << endl
+       << "_________________________" << endl;
 
-    t1 = 2.0 * pi * sqrt(dl / g);
-
-    t2 = 2.0 * pi * sqrt((dl / g) * (1.0 + (1.0 / 16.0) * pow(radianAlfa, 2)));
-
-    double halfAlpha = radianAlfa / 2.0;
-    double sinHalf = sin(halfAlpha);
-    double sin2 = pow(sinHalf, 2);
-    double sin4 = pow(sinHalf, 4);
-
-    t3 = 2.0 * pi * sqrt((dl / g) * (1.0 + (1.0 / 4.0) * sin2 + (9.0 / 64.0) * sin4));
-
-    cout << "_________________________" << endl;
-    cout << "t1 = " << t1 << endl;
-    cout << "t2 = " << t2 << endl;
-    cout << "t3 = " << t3 << endl;
-    cout << "_________________________" << endl;
+  return 0;
 }
